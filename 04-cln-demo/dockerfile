@@ -1,0 +1,15 @@
+FROM blockstream/lightningd:latest
+
+COPY image /
+
+## Copy entrypoint script and make executable.
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+## Add custom profile to bashrc.
+RUN PROFILE="/root/.profile" \
+  && printf "\n[ -f $PROFILE ] && . $PROFILE\n\n" >> /root/.bashrc
+
+WORKDIR /root
+
+ENTRYPOINT [ "entrypoint.sh" ]

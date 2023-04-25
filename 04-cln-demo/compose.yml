@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  cln-alice:
+    build: .
+    image: cln-demo:latest
+    container_name: cln-alice
+    command: --conf /config/alice.conf
+    hostname: cln-alice
+    networks:
+      - polar
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - alice-data:/root/.lightning:rw
+      - ./plugins:/plugins:rw
+
+  cln-bob:
+    build: .
+    image: cln-demo:latest
+    container_name: cln-bob
+    command: --conf /config/bob.conf
+    hostname: cln-bob
+    networks:
+      - polar
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - bob-data:/root/.lightning:rw
+      - ./plugins:/plugins:rw
+
+networks:
+  polar:
+    name: 1_default
+
+volumes:
+  alice-data:
+    name: cln_data_alice
+  bob-data:
+    name: cln_data_bob

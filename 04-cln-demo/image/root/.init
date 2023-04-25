@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+## This file is loaded upon login.
+## Feel free to customize it as you wish!
+
+ETH0ADDR="$(ip addr show eth0 | grep -w inet | awk '{print $2}' | cut -d/ -f1)"
+
+display() {
+  [ -n "$1" ] && printf "$1\n" || printf "Nothing to display.\n"
+}
+
+templ banner "$(date)"
+
+printf "Running as $(templ hlight $(uname -n)) [$ETH0ADDR] on $(uname -o) $(uname -m) platform.\n\n"

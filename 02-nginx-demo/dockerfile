@@ -1,0 +1,20 @@
+## Specify a base image to build from.
+FROM debian:bullseye-slim
+
+## Use -y flag to install without prompts.
+RUN apt-get update && apt-get install -y nginx
+
+## Clear out existing default html files.
+RUN rm /var/www/html/*
+
+## Make sure to include the trailing slash!
+COPY html/* /var/www/html/
+
+## Update your current working directory.
+WORKDIR /var/www/html
+
+## Set command to run when container starts.
+ENTRYPOINT [ "nginx" ]
+
+## OPTIONAL: Provide arguments to use with above command.
+CMD [ "-g", "daemon off;" ]

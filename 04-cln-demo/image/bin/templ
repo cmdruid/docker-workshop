@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+## Utility for generating colored templates.
+
+set -E
+
+###############################################################################
+# Methods
+###############################################################################
+
+fgc() {
+  if [ -z "$1" ] || [ -z "$2" ]; then usage && exit 0; fi
+  code="$1" && string="$2"
+  printf "\e[38;5;${code}m${string}\e[0m"
+}
+
+bgc() {
+  if [ -z "$1" ] || [ -z "$2" ]; then usage && exit 0; fi
+  code="$1" && string="$2"
+  printf "\e[48;5;${code}m${string}\e[0m"
+}
+
+banner() {
+  ## Creates a colorful banner.
+  [ -n "$2" ] && linecolor="$2" || linecolor="214"
+  [ -n "$3" ] && textcolor="$3" || textcolor="255"
+  printf %b\\n "
+$(fgc $linecolor =============================================================================)
+  $(fgc $textcolor "$1")
+$(fgc $linecolor =============================================================================)
+"
+}
+
+hlight() {
+  ## Highlights text with foreground and background colors.
+  [ -n "$2" ] && fgcolor="$2" || fgcolor="252"
+  [ -n "$3" ] && bgcolor="$3" || bgcolor="055"
+  text="$(fgc $fgcolor " $1 ")"
+  printf "$(bgc $bgcolor "$text")"
+}
+
+###############################################################################
+# Script
+###############################################################################
+
+for arg in "$@"; do
+  case $arg in
+    fgc) shift; fgc "$1" "$2"; exit 0;;
+    bgc) shift; bgc "$1" "$2"; exit 0;;
+    banner) shift; banner "$1" "$2" "$3"; exit 0;;
+    hlight) shift; hlight "$1" "$2" "$3"; exit 0;;
+  esac
+done
