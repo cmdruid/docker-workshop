@@ -2,35 +2,29 @@
 
 How to setup a Pleb development environment using Docker.
 
-**Presentation Link:**  
-https://slugify.link/dockercrashcourse  
+## Workshop Overview
 
+- How to use Docker CLI.
+- Working with `dockerfile` and `compose` files.
+- Hands-on with a few demo projects.
+- Launch our own Lightning development network.
 
-## Docker Hello World
-```sh
-## Launch a container with nodejs.
-docker run -it -p 80:80 node:latest
-```
-```js
-// Run a simple program.
-for (let c of ‘Hello world!’) { 
-  console.log(c)
-}
-```
+Full guide on building with Docker:
+https://docs.docker.com/build/guide
 
-## Workbench Pattern
-```md
-Build       : Everything for building.
-Config      : Read-only store for configs.
-Data        : For storing persistent data.
-Home        : Home and entrypoint for dev.
-Image       : Copied to ‘/’ at build time. 
-.env        : Configures environment vars.
-Dockerfile  : Main image build file.
-Compose.yml : Main container config.
+## Requirements
 
-https://github.com/cmdruid/workbench
-```
+Docker Engine:
+https://docs.docker.com/engine/install
+
+Core Bitcoin Binaries (for your platform):
+https://bitcoincore.org/en/download
+
+Lightning Binaries (for your platform):
+https://github.com/ElementsProject/lightning/releases
+
+Polar Desktop:
+https://lightningpolar.com
 
 ## Sample Projects
 
