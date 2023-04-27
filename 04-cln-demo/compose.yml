@@ -5,7 +5,6 @@ services:
     build: .
     image: cln-demo:latest
     container_name: cln-alice
-    command: --conf /config/alice.conf
     hostname: cln-alice
     networks:
       - polar
@@ -13,13 +12,13 @@ services:
     tty: true
     volumes:
       - alice-data:/root/.lightning:rw
+      - ./config/alice:/config:rw
       - ./plugins:/plugins:rw
 
   cln-bob:
     build: .
     image: cln-demo:latest
     container_name: cln-bob
-    command: --conf /config/bob.conf
     hostname: cln-bob
     networks:
       - polar
@@ -27,6 +26,7 @@ services:
     tty: true
     volumes:
       - bob-data:/root/.lightning:rw
+      - ./config/bob:/config:rw
       - ./plugins:/plugins:rw
 
 networks:

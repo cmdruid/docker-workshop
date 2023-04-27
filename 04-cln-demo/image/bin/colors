@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 ## Display a palette of colors and their color codes.
 
 printf "\n==== Color Palette ====\n"

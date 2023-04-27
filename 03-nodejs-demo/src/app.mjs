@@ -1,5 +1,7 @@
 import express from 'express'
 
+const LISTEN_PORT = 3000
+
 const app = express()
 
 app.use(express.urlencoded({ extended: false }))
@@ -15,6 +17,6 @@ app.post('/hello', async (req, res) => {
   return res.status(200).json(req.body)
 })
 
-app.listen(3000, () => {
-  console.log('Express server now listening on port 3000.')
+app.listen(LISTEN_PORT, () => {
+  console.log('Express server now listening on port:', LISTEN_PORT)
 })

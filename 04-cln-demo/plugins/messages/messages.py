@@ -8,7 +8,6 @@ import json, random
 
 plugin = Plugin()
 
-
 @plugin.method('sendmessage')
 def send_msg(plugin, peer_id, payload):
   """Messages are in the byte format of [type(2)][id(8)][data]."""
@@ -52,6 +51,6 @@ def init(options, configuration, plugin):
 
 
 plugin.add_notification_topic('messagebus')
-plugin.add_option('mtype', '0xFFFF', 'Set the message type, in hex. Must be odd number. Default 0xFFFF')
+plugin.add_option('mtype', '0xFFFF', 'Set the message magic. Must be odd number. Default 0xFFFF')
 
 plugin.run()

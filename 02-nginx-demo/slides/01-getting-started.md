@@ -9,7 +9,7 @@ Build the image:
 docker build -t nginx-img .
 ```
 
-Launch the container:
+Launch the container in detached mode:
 ```bash
-docker run nginx-img
+docker run -d nginx-img
 ```

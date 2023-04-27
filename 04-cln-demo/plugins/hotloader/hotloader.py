@@ -28,7 +28,7 @@ def hotload(plugin, command=None, **kwargs):
     plugin_monitor(plugin)
   if command == 'stop':
     plugin.runstate = 'disabled'
-  return f"Hotload status: '{plugin.runstate}'. Use commands 'start' or 'stop' to change it."
+  return f"Hotload status: '{plugin.runstate}'. Use the commands 'start' or 'stop' to change it."
     
 
 def plugin_monitor(plugin):
@@ -82,11 +82,12 @@ def init(options, configuration, plugin):
   plugin.interval  = int(plugin.get_option('hotload-interval'))
   plugin.log(f"Hotloader initialized!")
   plugin.log("Watch path set to: {}".format(plugin.watchpath))
+  plugin_monitor(plugin)
   return
 
 
 plugin.add_option('hotload-state', 'disabled', f"Default state of plugin when lightningd starts.")
-plugin.add_option('hotload-path', DEFAULT_PLUGPATH, f"Plugin path to check for file changes. Default is {DEFAULT_PLUGPATH} path.")
-plugin.add_option('hotload-interval', DEFAULT_INTERVAL, f"Interval to check for file changes. Default is {DEFAULT_INTERVAL} seconds.")
+plugin.add_option('hotload-path', DEFAULT_PLUGPATH, f"Path to check for file changes. Default is {DEFAULT_PLUGPATH} path.")
+plugin.add_option('hotload-interval', DEFAULT_INTERVAL, f"Interval to check for changes. Default is {DEFAULT_INTERVAL} seconds.")
 
 plugin.run()

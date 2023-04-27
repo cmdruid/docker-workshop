@@ -1,68 +1,10 @@
-
-
 # Docker Crash Course
 
-How to setup a Pleb Lightning Node for Production and Development.
+How to setup a Pleb development environment using Docker.
 
 **Presentation Link:**  
-https://slugify.link/dockerworkshop  
+https://slugify.link/dockercrashcourse  
 
-
-## Overview
-
-- What is a Docker Container?
-- Setup a Docker Environment
-- How to use Docker (CLI, Compose, Portainer)
-- Create a simple template project.
-- Launch your own Lightning Node.
-
-## Setting up a Docker Environment
-
-- Get Docker Desktop:  
-  https://docs.docker.com/get-docker  
-
-- Get Docker Engine:  
-  https://docs.docker.com/engine/install  
-
-- (optional) Get VScode Extention:  
-  https://code.visualstudio.com/docs/containers/overview  
-
-- (optional) Register on Docker Hub:  
-  https://hub.docker.com  
-
-## Ways to use Docker
-
-- Docker Command-Line:  
-  https://docs.docker.com/engine/reference/commandline/cli  
-
-- Docker Build:  
-  https://docs.docker.com/engine/reference/builder  
-
-- Docker Compose:  
-  https://docs.docker.com/compose/compose-file  
-
-- Docker Desktop:  
-  https://docs.docker.com/desktop  
-
-- VSCode Extention:  
-  https://code.visualstudio.com/docs/containers/overview  
-
-- Portainer:  
-  https://docs.portainer.io/start/install/server/docker  
-
-## Anatomy of a Docker Project
-
-* `.dockerfile`:  
-  Builds your docker image.
-
-* `entrypoint.sh`:  
-  Runs inside your container.  
-
-* `build.sh` and `start.sh` scripts:  
-  (optional)  
-
-* `compose.yml`:  
-  Configures your docker container (or many containers!)
 
 ## Docker Hello World
 ```sh

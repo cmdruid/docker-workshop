@@ -1,9 +1,6 @@
 ## Specify a base image to build from.
 FROM node:latest
 
-## Make sure to include the trailing slash!
-COPY src /root/src/
-
 ## Update your current working directory.
 WORKDIR /root
 

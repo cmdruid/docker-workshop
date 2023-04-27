@@ -11,5 +11,5 @@ docker build -t nodejs-img .
 
 Launch the container:
 ```bash
-docker run -v ./src:/src nodejs-img
+docker run -p 8080:3000 -v ./src:/root/src nodejs-img
 ```

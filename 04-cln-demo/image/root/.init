@@ -11,3 +11,4 @@ display() {
 templ banner "$(date)"
 
 printf "Running as $(templ hlight $(uname -n)) [$ETH0ADDR] on $(uname -o) $(uname -m) platform.\n\n"
+printf "Node ID: $(lcli getinfo | jgrep id)\n\n"

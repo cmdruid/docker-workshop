@@ -1,14 +1,56 @@
-FROM blockstream/lightningd:latest
+## Load a basic debian environment.
+FROM debian:bullseye-slim
 
+## Install additional packages.
+RUN apt-get update && apt-get install -y \
+  curl iproute2 libsodium-dev neovim procps qrencode sqlite3 unzip
+
+## Install Python Dependencies
+RUN apt-get install -y python3 python3-pip
+RUN pip3 install pyln-client requests
+
+## Install Node.
+RUN curl -fsSL https://fnm.vercel.app/install | bash
+RUN . /root/.bashrc && \
+  LATEST=$(fnm list-remote | tail -n 1) \
+  && fnm install $LATEST \
+  && ln -s "$(which node)" /usr/bin/node \
+  && npm install -g npm yarn
+
+## Install Rust.
+## RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+
+## Copy over compiled binaries.
+COPY build/out /tmp/bin/
+
+## Switch to temp folder.
+WORKDIR /tmp/bin
+
+## Unpack and/or install binaries.
+RUN for file in $(find -maxdepth 1); do \
+  if [ -n "$(echo $file | grep .tar.)" ]; then \
+    echo "Unpacking $file to /usr/local ..." \
+    && tar --wildcards --strip-components=1 -C /usr/local -xf $file \
+  ; else \
+    echo "Moving $file to /usr/local/bin ..." \
+    && chmod +x $file && mv $file /usr/local/bin \
+  ; fi \
+; done
+
+## Clean up temporary files.
+RUN rm -rf /tmp/* /var/tmp/*
+
+## Copy the image folder to our root filesystem.
 COPY image /
 
-## Copy entrypoint script and make executable.
-COPY entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/entrypoint.sh
+## Make sure our entrypoint script is executable.
+RUN chmod +x /entrypoint.sh && mv /entrypoint.sh /usr/bin
 
 ## Add custom profile to bashrc.
 RUN PROFILE="/root/.profile" \
   && printf "\n[ -f $PROFILE ] && . $PROFILE\n\n" >> /root/.bashrc
+
+# ENV PATH="/usr/local/bin:$PATH"
 
 WORKDIR /root
 

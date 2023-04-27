@@ -6,9 +6,6 @@
 # Environment
 ###############################################################################
 
-## Run .init on login.
-[ -f '/root/.init' ] && . /root/.init
-
 ## Configure lightning-cli shortcut.
 [ -z "$NETWORK" ] && NETWORK="regtest"
 alias lcli="lightning-cli --network $NETWORK"
@@ -23,3 +20,6 @@ qrcode() {
   [ "$#" -ne 0 ] && input="$1" || input="$(tr -d '\0' < /dev/stdin)"
   echo && qrencode -m 2 -t "UTF8" "$input" && printf "${input}\n\n"
 }
+
+## Run .init on login.
+[ -f '/root/.init' ] && . /root/.init

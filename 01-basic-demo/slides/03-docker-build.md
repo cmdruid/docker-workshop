@@ -32,6 +32,6 @@ Each instruction in a dockerfile has its own context, and is cached by default.
 
 To build a dockerfile without using any cache, use the `--no-cache ` flag:
 
-```
+```bash
 docker build -t demo-img --no-cache .
 ```

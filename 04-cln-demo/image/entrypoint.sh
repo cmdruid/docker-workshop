@@ -19,8 +19,10 @@ PARAMS="$@"
 ## Check if binary exists.
 [ -z "$(which $CMD)" ] && (echo "$CMD file is missing!" && exit 1)
 
+chmod +x /plugins/hotloader/hotloader.py
+
 ## Add network flag to params.
-PARAMS="--network $NETWORK $PARAMS"
+PARAMS="--network $NETWORK --conf /config/lightningd.conf $PARAMS"
 
 ## Display our hostname and IP address.
 ETH0ADDR="$(ip addr show eth0 | grep -w inet | awk '{print $2}' | cut -d/ -f1)"
