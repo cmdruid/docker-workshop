@@ -9,21 +9,21 @@ How to setup a Pleb development environment using Docker.
 - Hands-on with a few demo projects.
 - Launch our own Lightning development network.
 
-Full guide on building with Docker:
+Full guide on building with Docker:  
 https://docs.docker.com/build/guide
 
 ## Requirements
 
-Docker Engine:
+Docker Engine:  
 https://docs.docker.com/engine/install
 
-Core Bitcoin Binaries (for your platform):
+Core Bitcoin Binaries (for your platform):  
 https://bitcoincore.org/en/download
 
-Lightning Binaries (for your platform):
+Lightning Binaries (for your platform):  
 https://github.com/ElementsProject/lightning/releases
 
-Polar Desktop:
+Polar Desktop:  
 https://lightningpolar.com
 
 ## Sample Projects
