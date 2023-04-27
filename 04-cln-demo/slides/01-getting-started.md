@@ -1,7 +1,3 @@
----
-marp: true
----
-
 # CLN Demo
 
 Navigate to the `cln-demo` folder.

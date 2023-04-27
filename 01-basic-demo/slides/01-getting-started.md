@@ -1,7 +1,3 @@
----
-marp: true
----
-
 # Getting Started
 
 Check if Docker is installed.

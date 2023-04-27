@@ -1,7 +1,3 @@
----
-marp: true
----
-
 # Nginx Demo
 
 Build the image:
@@ -13,3 +9,4 @@ Launch the container in detached mode:
 ```bash
 docker run -d nginx-img
 ```
+

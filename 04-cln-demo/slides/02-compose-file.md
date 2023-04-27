@@ -1,7 +1,3 @@
----
-marp: true
----
-
 # Docker Compose
 
 * A compose file replaces `docker run` for configuring and starting a container.
@@ -14,3 +10,4 @@ marp: true
 
 Documentation for Docker Compose:  
 https://docs.docker.com/compose/compose-file
+
