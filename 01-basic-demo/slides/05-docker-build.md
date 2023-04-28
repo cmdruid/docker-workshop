@@ -1,6 +1,6 @@
 # Using Docker Build
 
-Basic usage of docker build.
+Basic usage of docker build:
 
 ```bash
 docker build
@@ -9,7 +9,7 @@ docker build
   CONTEXT_DIR        ## The base path you wish to build from.
 ```
 
-Example usage:
+Example Usage:
 
 ```bash
 docker build -t demo-img .

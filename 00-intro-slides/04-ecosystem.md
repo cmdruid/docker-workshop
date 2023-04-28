@@ -1,4 +1,4 @@
-# Setting up a Docker Environment
+# Docker Ecosystem
 
 - Get Docker Desktop:  
   https://docs.docker.com/get-docker  

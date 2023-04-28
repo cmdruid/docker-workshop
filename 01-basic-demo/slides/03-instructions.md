@@ -1,6 +1,6 @@
-# Common Instructions
+# Dockerfile Instructions
 
-Here are some common instructions that you will see in a dockerfile:
+Some common instructions you will see in a dockerfile:
 
 ```
 FROM       : Import an existing image (local or from docker hub).
